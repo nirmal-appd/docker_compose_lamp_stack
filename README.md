@@ -1,4 +1,7 @@
-A repo where I tried out the docker-compose feature of docker.
+
+<h3>Docker Compose Usage</h3>
+
+<b>A repo where I tried out the docker-compose feature of docker.</b>
 <br/>
 So, Dockerfile is standalone features or multi-features with too much code rewrite. Again spins to a container instance only.
 <br/>
