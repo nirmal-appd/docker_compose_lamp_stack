@@ -14,8 +14,9 @@ Now, the fun part is stitching multiple Dockerfiles (which again spins up multip
 Also think of code reusability of sharing these Dockerfiles across projects. Your service is not limited to this project. It is independent dockerfile so just reuse it again in another compose build.
 <br/>
 One step away from kubernetes or k8s.
+<br/>
 
-N.B.
+<h5>End Notes to me it's N.B.</h5>
 It is a work in Progress, and the first service of Apache/PHP clubbed is not the way to go.
 Each service in itself.
 Working on the same and will update soon as I have time.
