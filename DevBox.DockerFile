@@ -12,6 +12,11 @@ RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.
 RUN yum -y install php72w php72w-bcmath php72w-cli php72w-common php72w-gd php72w-intl php72w-ldap php72w-mbstring \
     php72w-mysql php72w-pear php72w-soap php72w-xml php72w-xmlrpc
 
+# Install Redis
+RUN pecl install redis-5.1.1 \
+    && pecl install xdebug-2.8.1 \
+    && docker-php-ext-enable redis xdebug
+
 # Update Apache Configuration
 RUN sed -E -i -e '/<Directory "\/var\/www\/html">/,/<\/Directory>/s/AllowOverride None/AllowOverride All/' /etc/httpd/conf/httpd.conf
 RUN sed -E -i -e 's/DirectoryIndex (.*)$/DirectoryIndex index.php \1/g' /etc/httpd/conf/httpd.conf
