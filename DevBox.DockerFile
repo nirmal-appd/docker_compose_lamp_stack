@@ -10,17 +10,9 @@ RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.
 
 # Install PHP
 RUN yum -y install php72w php72w-bcmath php72w-cli php72w-common php72w-gd php72w-intl php72w-ldap php72w-mbstring \
-    php72w-mysql php72w-pear php72w-soap php72w-xml php72w-xmlrpc
+    php72w-mysql php72w-pear php72w-soap php72w-xml php72w-xmlrpc php72w-pecl-redis
 
-#------------------------------------------------------------
-# Redis
-## Install file
-ENV REDIS="redis-stable"
-## Redis install
-RUN cd /usr/local/src && wget http://download.redis.io/releases/$REDIS.tar.gz
-RUN cd /usr/local/src && tar xzf $REDIS.tar.gz
-RUN cd /usr/local/src/$REDIS && make && make install
-RUN cd /usr/local/src/$REDIS/utils && ./install_server.sh
+ADD ./files/redis.conf /etc/redis.conf
 
 # Update Apache Configuration
 RUN sed -E -i -e '/<Directory "\/var\/www\/html">/,/<\/Directory>/s/AllowOverride None/AllowOverride All/' /etc/httpd/conf/httpd.conf
